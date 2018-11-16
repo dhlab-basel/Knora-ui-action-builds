@@ -1,0 +1,38 @@
+{
+  "name": "@knora/action",
+  "version": "0.0.14",
+  "description": "Knora ui module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dhlab-basel/Knora-ui.git"
+  },
+  "keywords": [
+    "angular",
+    "knora",
+    "digital humanities",
+    "dhlab basel"
+  ],
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/animations": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/cdk": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/material": "^6.0.0-rc.0 || ^6.0.0",
+    "ts-md5": "^1.2.4",
+    "jdnconvertiblecalendar": "^0.0.2",
+    "jdnconvertiblecalendardateadapter": "^0.0.7"
+  },
+  "main": "bundles/knora-action.umd.js",
+  "module": "fesm5/knora-action.js",
+  "es2015": "fesm2015/knora-action.js",
+  "esm5": "esm5/knora-action.js",
+  "esm2015": "esm2015/knora-action.js",
+  "fesm5": "fesm5/knora-action.js",
+  "fesm2015": "fesm2015/knora-action.js",
+  "typings": "knora-action.d.ts",
+  "metadata": "knora-action.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
+}
