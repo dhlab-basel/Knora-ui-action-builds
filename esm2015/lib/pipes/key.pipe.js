@@ -1,29 +1,15 @@
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes,extraRequire,uselessCode} checked by tsc
- */
 import { Pipe } from '@angular/core';
 /**
  * This pipe can be used for "for loops", in the case of an array with non-numeric indexes.
- * it returns the key and the value and we have to use it as follow:
+ * It returns the key and the value(s). In the example below the {{item.key}} contains the index value
+ * and the {{item.value}} contains the value(s).
  *
- * *ngFor="let item of list | key"
+ * When the value is an object with name and label, you get them with:
+ * {{item.value.name}} and {{item.value.label}}
  *
- * {{item.key}} is the index value;
- *
- * {{item.value}} are the values
- *
- * When the value is an object with name and label, you got them with:
- * {{item.value.name}} resp. {{item.value.label}}
  */
 export class KeyPipe {
-    /**
-     * @param {?} value
-     * @param {?=} args
-     * @return {?}
-     */
     transform(value, args) {
-        /** @type {?} */
         const keys = [];
         for (const key in value) {
             if (value.hasOwnProperty(key)) {
@@ -35,8 +21,8 @@ export class KeyPipe {
 }
 KeyPipe.decorators = [
     { type: Pipe, args: [{
-                name: 'key'
+                name: 'kuiKey'
             },] },
 ];
 
-//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoia2V5LnBpcGUuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9Aa25vcmEvYWN0aW9uLyIsInNvdXJjZXMiOlsibGliL3BpcGVzL2tleS5waXBlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7Ozs7QUFBQSxPQUFPLEVBQUUsSUFBSSxFQUFpQixNQUFNLGVBQWUsQ0FBQzs7Ozs7Ozs7Ozs7Ozs7QUFvQnBELE1BQU07Ozs7OztJQUVKLFNBQVMsQ0FBQyxLQUFVLEVBQUUsSUFBVTs7UUFDOUIsTUFBTSxJQUFJLEdBQUcsRUFBRSxDQUFDO1FBQ2hCLEdBQUcsQ0FBQyxDQUFDLE1BQU0sR0FBRyxJQUFJLEtBQUssQ0FBQyxDQUFDLENBQUM7WUFDdEIsRUFBRSxDQUFDLENBQUMsS0FBSyxDQUFDLGNBQWMsQ0FBQyxHQUFHLENBQUMsQ0FBQyxDQUFDLENBQUM7Z0JBQzVCLElBQUksQ0FBQyxJQUFJLENBQUMsRUFBQyxHQUFHLEVBQUUsR0FBRyxFQUFFLEtBQUssRUFBRSxLQUFLLENBQUMsR0FBRyxDQUFDLEVBQUMsQ0FBQyxDQUFDO2FBQzVDO1NBQ0o7UUFDRCxNQUFNLENBQUMsSUFBSSxDQUFDO0tBQ2I7OztZQWJGLElBQUksU0FBQztnQkFDSixJQUFJLEVBQUUsS0FBSzthQUNaIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgUGlwZSwgUGlwZVRyYW5zZm9ybSB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuXG4vKipcbiAqIFRoaXMgcGlwZSBjYW4gYmUgdXNlZCBmb3IgXCJmb3IgbG9vcHNcIiwgaW4gdGhlIGNhc2Ugb2YgYW4gYXJyYXkgd2l0aCBub24tbnVtZXJpYyBpbmRleGVzLlxuICogaXQgcmV0dXJucyB0aGUga2V5IGFuZCB0aGUgdmFsdWUgYW5kIHdlIGhhdmUgdG8gdXNlIGl0IGFzIGZvbGxvdzpcbiAqXG4gKiAqbmdGb3I9XCJsZXQgaXRlbSBvZiBsaXN0IHwga2V5XCJcbiAqXG4gKiB7e2l0ZW0ua2V5fX0gaXMgdGhlIGluZGV4IHZhbHVlO1xuICpcbiAqIHt7aXRlbS52YWx1ZX19IGFyZSB0aGUgdmFsdWVzXG4gKlxuICogV2hlbiB0aGUgdmFsdWUgaXMgYW4gb2JqZWN0IHdpdGggbmFtZSBhbmQgbGFiZWwsIHlvdSBnb3QgdGhlbSB3aXRoOlxuICoge3tpdGVtLnZhbHVlLm5hbWV9fSByZXNwLiB7e2l0ZW0udmFsdWUubGFiZWx9fVxuICovXG5cblxuQFBpcGUoe1xuICBuYW1lOiAna2V5J1xufSlcbmV4cG9ydCBjbGFzcyBLZXlQaXBlIGltcGxlbWVudHMgUGlwZVRyYW5zZm9ybSB7XG5cbiAgdHJhbnNmb3JtKHZhbHVlOiBhbnksIGFyZ3M/OiBhbnkpOiBhbnkge1xuICAgIGNvbnN0IGtleXMgPSBbXTtcbiAgICBmb3IgKGNvbnN0IGtleSBpbiB2YWx1ZSkge1xuICAgICAgICBpZiAodmFsdWUuaGFzT3duUHJvcGVydHkoa2V5KSkge1xuICAgICAgICAgICAga2V5cy5wdXNoKHtrZXk6IGtleSwgdmFsdWU6IHZhbHVlW2tleV19KTtcbiAgICAgICAgfVxuICAgIH1cbiAgICByZXR1cm4ga2V5cztcbiAgfVxufVxuIl19
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoia2V5LnBpcGUuanMiLCJzb3VyY2VSb290Ijoibmc6Ly9Aa25vcmEvYWN0aW9uLyIsInNvdXJjZXMiOlsibGliL3BpcGVzL2tleS5waXBlLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBLE9BQU8sRUFBRSxJQUFJLEVBQWlCLE1BQU0sZUFBZSxDQUFDO0FBRXBEOzs7Ozs7OztHQVFHO0FBSUgsTUFBTTtJQUVGLFNBQVMsQ0FBQyxLQUFVLEVBQUUsSUFBVTtRQUM1QixNQUFNLElBQUksR0FBRyxFQUFFLENBQUM7UUFDaEIsS0FBSyxNQUFNLEdBQUcsSUFBSSxLQUFLLEVBQUU7WUFDckIsSUFBSSxLQUFLLENBQUMsY0FBYyxDQUFDLEdBQUcsQ0FBQyxFQUFFO2dCQUMzQixJQUFJLENBQUMsSUFBSSxDQUFDLEVBQUMsR0FBRyxFQUFFLEdBQUcsRUFBRSxLQUFLLEVBQUUsS0FBSyxDQUFDLEdBQUcsQ0FBQyxFQUFDLENBQUMsQ0FBQzthQUM1QztTQUNKO1FBQ0QsT0FBTyxJQUFJLENBQUM7SUFDaEIsQ0FBQzs7O1lBYkosSUFBSSxTQUFDO2dCQUNGLElBQUksRUFBRSxRQUFRO2FBQ2pCIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgUGlwZSwgUGlwZVRyYW5zZm9ybSB9IGZyb20gJ0Bhbmd1bGFyL2NvcmUnO1xuXG4vKipcbiAqIFRoaXMgcGlwZSBjYW4gYmUgdXNlZCBmb3IgXCJmb3IgbG9vcHNcIiwgaW4gdGhlIGNhc2Ugb2YgYW4gYXJyYXkgd2l0aCBub24tbnVtZXJpYyBpbmRleGVzLlxuICogSXQgcmV0dXJucyB0aGUga2V5IGFuZCB0aGUgdmFsdWUocykuIEluIHRoZSBleGFtcGxlIGJlbG93IHRoZSB7e2l0ZW0ua2V5fX0gY29udGFpbnMgdGhlIGluZGV4IHZhbHVlXG4gKiBhbmQgdGhlIHt7aXRlbS52YWx1ZX19IGNvbnRhaW5zIHRoZSB2YWx1ZShzKS5cbiAqXG4gKiBXaGVuIHRoZSB2YWx1ZSBpcyBhbiBvYmplY3Qgd2l0aCBuYW1lIGFuZCBsYWJlbCwgeW91IGdldCB0aGVtIHdpdGg6XG4gKiB7e2l0ZW0udmFsdWUubmFtZX19IGFuZCB7e2l0ZW0udmFsdWUubGFiZWx9fVxuICpcbiAqL1xuQFBpcGUoe1xuICAgIG5hbWU6ICdrdWlLZXknXG59KVxuZXhwb3J0IGNsYXNzIEtleVBpcGUgaW1wbGVtZW50cyBQaXBlVHJhbnNmb3JtIHtcblxuICAgIHRyYW5zZm9ybSh2YWx1ZTogYW55LCBhcmdzPzogYW55KTogYW55IHtcbiAgICAgICAgY29uc3Qga2V5cyA9IFtdO1xuICAgICAgICBmb3IgKGNvbnN0IGtleSBpbiB2YWx1ZSkge1xuICAgICAgICAgICAgaWYgKHZhbHVlLmhhc093blByb3BlcnR5KGtleSkpIHtcbiAgICAgICAgICAgICAgICBrZXlzLnB1c2goe2tleToga2V5LCB2YWx1ZTogdmFsdWVba2V5XX0pO1xuICAgICAgICAgICAgfVxuICAgICAgICB9XG4gICAgICAgIHJldHVybiBrZXlzO1xuICAgIH1cbn1cbiJdfQ==

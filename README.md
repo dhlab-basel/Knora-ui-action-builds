@@ -1,143 +1,118 @@
-# Action module
-![npm (scoped)](https://img.shields.io/npm/v/@knora/action.svg)
+# Knora-ui action module
+[![npm (scoped)](https://img.shields.io/npm/v/@knora/action.svg)](https://www.npmjs.com/package/@knora/action)
 
-This module is part of [Knora-ui](https://github.com/dhlab-basel/Knora-ui) modules, developed by the team at the [DHLab Basel](http://dhlab.unibas.ch).
+This module is part of [Knora-ui](https://github.com/dhlab-basel/Knora-ui) modules, developed by the team at the [Data and Service Center for Humanities DaSCH](http://dasch.swiss).
+
+The action module contains special pipes to sort lists or to get the index key in arrays, but also directives for images, sort buttons and s.o.
+
+## Prerequisites
+For help getting started with a new Angular app, check out the [Angular CLI](https://cli.angular.io/).
+
+For existing apps, follow these steps to begin using Knora-ui action.
 
 ## Install
-You can use either the npm or yarn command-line tool to install packages. Use whichever is appropriate for your project.
-
-### NPM
-`npm install --save @knora/action ts-md5@^1.2.4 jdnconvertiblecalendar@0.0.2 jdnconvertiblecalendardateadapter@0.0.7`
+You can use either the npm or yarn command-line tool to install packages. Use whichever is appropriate for your project in the examples below.
 
 ### Yarn
-`yarn add @knora/action ts-md5@^1.2.4 jdnconvertiblecalendar@0.0.2 jdnconvertiblecalendardateadapter@0.0.7`
 
----
+`yarn add @knora/action`
+
+### NPM
+`npm install --save @knora/action`
 
 
-## Components
-This module contains various components:
+### Dependencies
+This module has the following package dependencies, which you also have to install.
+ - @angular/common@6.0.0
+ - @angular/core@6.0.0
+ - @angular/animations@6.0.0
+ - @angular/cdk@6.0.0
+ - @angular/material@6.0.0
+ - ts-md5@1.2.4
+ - jdnconvertiblecalendar@0.0.2
+ - jdnconvertiblecalendardateadapter@0.0.7
+ 
+  
+ ## Setup
+ 
+ Import the action module in your app.module.ts and add it to the NgModules's imports:
+ 
+ ```javascript
+ import { AppComponent } from './app.component';
+ import { KuiActionModule } from '@knora/action';
+ 
+ @NgModule({
+     declarations: [
+         AppComponent
+     ],
+     imports: [
+         KuiActionModule
+     ],
+     providers: [ ],
+     bootstrap: [AppComponent]
+ })
+ export class AppModule {
+ }
+ ```
+ 
 
+## Components, Directives and Pipes
+This module contains various components like a progress indicator, sort button and sort-by pipe, but also helper for images (in the admin interface) and existing names.
+
+
+<!--
 ### Progress indicator
 
 You can use the progress indicator in two ways:
 
-#### 1. classic loader
-[Example and demo](https://stackblitz.com/edit/knora-progress-indicator?file=src%2Fapp%2Fapp.component.html)
+1. classic loader
+2. submit-form-data loader 
 
-`<kui-progress-indicator></kui-progress-indicator>`
+[Example and demo](https://dhlab-basel.github.io/Knora-ui/modules/action/progress-indicator)
 
-#### 2. submit-form-data loader
-[Example and demo](https://stackblitz.com/edit/knora-progress-indicator?file=src%2Fapp%2Fapp.component.html)
-
-This kind of progress indicator needs the Angular Material Icons. So you have to import them into your app first by using the style file and adding the following line:
-`@import url('https://fonts.googleapis.com/icon?family=Material+Icons');`
-
-Then you can use the progress indicator in your template as follow:
-
-`<kui-progress-indicator [status]="status"></kui-progress-indicator>`
-
-Status is a number:
-* -1 => not ready
-*  0 => is loading
-*  1 => done
-
-and in case of an error: the number is 400
 
 ### Sort button
-
-[Example and Demo](https://stackblitz.com/edit/knora-sort-button?file=src%2Fapp%2Fapp.component.html)
 
 The sort button helps to sort a list by a selected topic. The following setup is needed:
 
 - sortProps is an array of {name, label} object and is needed for the selection.
-- the sort button returns a sortKey which is needed in the list and the pipe called sortBy
+- the sort button returns a sortKey which is needed in the list and the pipe called kuiSortBy
 
-#### html template
-```HTML
-<kui-sort-button [sortProps]="sortProps"
-                 [(sortKey)]="sortKey">
-</kui-sort-button>
 
-<ul>
-    <li *ngFor="let item of list | sortBy: sortKey">
-        <span [class.active]="sortKey === 'prename'">
-            {{item.prename}}
-        </span>
-        <span [class.active]="sortKey === 'lastname'">
-            {{item.lastname}}
-        </span>
-        by 
-        <span [class.active]="sortKey === 'creator'">
-            {{item.creator}}
-        </span>
-    </li>
-</ul>
-```
-
-#### Options
-It's possible to set the position of the sort button to right side.
-<kui-sort-button [sortProps]="sortProps"
-                 [(sortKey)]="sortKey"
-                 [position]="'right'">
-</kui-sort-button>
+[Example and demo](https://dhlab-basel.github.io/Knora-ui/modules/action/sort-button)
 
 ---
 
+
 ## Directives
 
-
 ### Admin image
-A attribute directive for images (`<img />`) to get a user avatar, which uses the service from gravatar.com and to set a project logo.
+A attribute directive for images (`<img />`) to get a user avatar, which uses the service from gravatar.com and to set a project logo. 
 
-#### 1. html template for project logo
-`<img kuiAdminImage [image]="url/to/image.ext" [type]="'project'" />`
- 
-#### 2. html template for user avatar
-`<img kuiAdminImage [image]="user@domain.tld" [type]="'user'" />`
+[Example and demo](https://dhlab-basel.github.io/Knora-ui/modules/action/admin-image)
 
-#### Feature in both types
-- If no [image] is defined, a default image will be displayed.
-- If the defined image is not found, a default error-image will be displayed.
 
 ### Existing Name
 This directive checks a form field to see if the value is unique. For example username or project short-name should be unique. Therefore we use the ExistingNameDirective.
 
-See the [Stackblitz example](https://stackblitz.com/edit/knora-existing-name?file=src%2Fapp%2Fapp.component.ts) how it works.
+[Example and demo](https://dhlab-basel.github.io/Knora-ui/modules/action/existing-name)
+
+[Stackblitz](https://stackblitz.com/edit/knora-existing-name?file=src%2Fapp%2Fapp.component.ts)
 
 
 ---
+
 
 ## Pipes
 
 ### Key
 In case of an object, where you don't know the labels or in case of an array with no numeric index, you can use the Key pipe. 
 
-For this array
-```TypeScript
-array = [];
+[Example and demo](https://dhlab-basel.github.io/Knora-ui/modules/action/key)
 
-// ... 
 
-this.array['index-1'] = 'Value in index 1';
-this.array['index-2'] = 'Value in index 2';
-this.array['index-3'] = 'Value in index 3';
+### Sort by
+The sortBy pipe is used to sort by a selected key. 
 
-]
-```
-we can use it in the template as follow:
-
-```HTML
-<ul>
-    <li *ngFor="let item of array | key">
-        {{item.key}}: {{item.value}}
-    </li>
-</ul>
-```
-
-Which shows this list
-*  index-1: Value in index 1
-*  index-2: Value in index 2
-*  index-3: Value in index 3
-
-See the [Stackblitz example](https://stackblitz.com/edit/knora-key?file=src%2Fapp%2Fapp.component.html) how it works.
+[Example and demo in sort button component](https://dhlab-basel.github.io/Knora-ui/modules/action/sort-button)
+-->

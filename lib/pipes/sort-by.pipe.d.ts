@@ -1,4 +1,7 @@
 import { PipeTransform } from '@angular/core';
 export declare class SortByPipe implements PipeTransform {
-    transform(array: Array<string>, args: string): Array<string>;
+    /**
+     * TODO: add description
+     */
+    transform(array: Array<any>, args: string): Array<any>;
 }
