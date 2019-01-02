@@ -4,7 +4,7 @@ import { ElementRef, OnChanges } from '@angular/core';
  */
 export declare class GndDirective implements OnChanges {
     private el;
-    gnd: string;
+    kuiGnd: string;
     private _gnd;
     constructor(el: ElementRef);
     ngOnChanges(): void;
